@@ -8,7 +8,6 @@ const Footer = () => {
   return (
     <footer className="footer" id="footer">
       <div className="footer-content">
-        {/* LEFT SECTION */}
         <div className="footer-content-left">
           <img src={assets.logo} alt="KhanaExpress Logo" />
 
@@ -24,17 +23,16 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* CENTER SECTION */}
         <div className="footer-content-center">
           <h2>Company</h2>
           <ul>
             <li>
-              <NavLink to="/" className="footer-link">
+              <NavLink to="#home" className="footer-link">
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink to="" className="footer-link">
+              <NavLink to="#" className="footer-link">
                 About Us
               </NavLink>
             </li>
@@ -51,7 +49,6 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* RIGHT SECTION */}
         <div className="footer-content-right">
           <h2>Get In Touch</h2>
           <ul>
@@ -72,7 +69,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* BOTTOM SECTION */}
       <hr />
       <p className="footer-copyright">&copy; {currentYear} KhanaExpress. All Rights Reserved.</p>
     </footer>

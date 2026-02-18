@@ -10,10 +10,13 @@
   margin: 0;
   box-sizing: border-box;
   font-family: Outfit, "Inter", sans-serif;
+  scroll-behavior: smooth;
 }
+
 
 body {
   min-height: 100vh;
+
 }
 
 .app {
@@ -42,3 +45,4 @@ ul {
     opacity: 1;
   }
 }
+

@@ -1,35 +1,44 @@
+import { useState } from "react";
 import { assets } from "../../assets/assets";
 import "./Navbar.css";
-import { NavLink } from "react-router-dom";
 
 const navItems = [
-  { id: 1 ,title: "Home", target: "/" },
-  { id: 2 ,title: "menu", target: "/menu" },
-  { id: 3 ,title: "mobile-app", target: "/mobile-app" },
-  { id: 4 ,title: "contact us", target: "/contact-us" },
+  { id: 1, label: "Home", value: "home" },
+  { id: 2, label: "Menu", value: "explore-menu" },
+  { id: 3, label: "Mobile App", value: "app-download" },
+  { id: 4, label: "Contact Us", value: "footer" },
 ];
 
 const Navbar = () => {
+  const [activeMenu, setActiveMenu] = useState("home");
+
   return (
-    <div className="navbar">
-      <img src={assets.logo} className="logo" alt="khanaExpress logo " />
-      <ul className="navbar-menu">
+    <div className="navbar" >
+      <img src={assets.logo} alt="logo" className="logo" />
+
+      <ul className="navbar-menu" >
         {navItems.map((item) => (
           <li key={item.id}>
-            <NavLink to={item.target} className={({ isActive }) => (isActive ? "active" : "")}>
-              {item.title}
-            </NavLink>
+            <a
+              href={`#${item.value}`}
+              onClick={() => setActiveMenu(item.value)}
+              className={activeMenu === item.value ? "active" : ""}
+            >
+              {item.label}
+            </a>
           </li>
         ))}
       </ul>
 
       <div className="navbar-right">
-        <img src={assets.search_icon} className="navbar-search-icon" alt="search" />
-        <div className="navbar-search_icon">
+        <img src={assets.search_icon} alt="search" />
+
+        <div className="navbar-search-icon">
           <img src={assets.basket_icon} alt="basket" />
           <div className="dot"></div>
         </div>
-        <button>sign In</button>
+
+        <button>Sign In</button>
       </div>
     </div>
   );
