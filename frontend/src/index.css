@@ -2,7 +2,8 @@
 
 :root {
   --primary-text-color: #49557e;
-  --primary-color: tomato;
+  --primary-color: #118866;
+  --primary-color-dark:#0c5f47;
 }
 
 * {

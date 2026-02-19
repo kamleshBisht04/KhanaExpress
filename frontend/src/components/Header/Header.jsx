@@ -4,13 +4,17 @@ function Header() {
   return (
     <div className="header" id="home">
       <div className="header-contents">
-        <h2>Order your favourite food here</h2>
+        <h2>
+          Best Food Which Makes You 
+          <span>
+            <strong> Hungry</strong>
+          </span>
+        </h2>
         <p>
-          Choose from a diverse menu featuring a detectable array of dishes crafted with the finest
-          ingredients and culinary expertise. Our mission is to satisfy your cravings and elevate
-          your dining experience, one delicious meal at a time.
+          Exploring the world of cuisine is like embarking on a flavorful adventure. Testy foods add
+          a thrilling twist, turning every bite into a delightful journey for the taste buds.
         </p>
-        <button>View Menu</button>
+        <button>Book yummy</button>
       </div>
     </div>
   );

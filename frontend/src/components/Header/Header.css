@@ -1,9 +1,10 @@
 .header {
   height: 34vw;
   margin: 1.875rem auto;
-  background: url("./header_img.png") no-repeat;
+  background: url("./header_img.jpg") no-repeat;
   background-size: contain;
   position: relative;
+  border-radius: 0.9375rem;
 }
 
 .header-contents {
@@ -11,31 +12,39 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  gap: 1.5rem;
-  max-width: 50%;
-  bottom: 10%;
+  gap: 2rem;
+  max-width: 60%;
+  bottom: 25%;
   left: 6vw;
   animation: fadeIn 3s;
 }
 
 .header-contents h2 {
   font-weight: 500;
-  color: white;
   font-size: max(4.6vw, 1.375rem);
 }
 
+.header-contents span {
+  color: var(--primary-color);
+}
+
 .header-contents p {
-  font-size: 1rem;
-  color: white;
+  font-size: 1.1rem;
   line-height: 1.5;
+  max-width: 70%;
 }
 
 .header-contents button {
   border: none;
-  color: #747474;
+  color: #ffffff;
   font-weight: 400;
   border-radius: 3.125rem;
   font-size: 1.125rem;
   padding: 0.75rem 1.8rem;
-  background-color: white;
+  background-color: var(--primary-color);
+  /* background-color: #299475; */
+}
+
+.header-contents button:hover {
+  background-color: var(--primary-color-dark);
 }

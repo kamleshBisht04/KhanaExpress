@@ -1,6 +1,7 @@
 import "./Footer.css";
 import { assets } from "../../assets/assets";
 import { NavLink } from "react-router-dom";
+import Logo from "../Logo/Logo";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -9,10 +10,9 @@ const Footer = () => {
     <footer className="footer" id="footer">
       <div className="footer-content">
         <div className="footer-content-left">
-          <img src={assets.logo} alt="KhanaExpress Logo" />
-
+          <Logo />
           <p>
-            KhanaExpress delivers fresh and delicious food at your doorstep. Fast delivery, secure
+            Eatigo delivers fresh and delicious food at your doorstep. Fast delivery, secure
             payments, and best quality guaranteed.
           </p>
 
@@ -62,7 +62,7 @@ const Footer = () => {
             <li>
               ✉
               <a href="mailto:contact@khanaexpress.com" className="footer-contact-link">
-                contact@khanaexpress.com
+                contact@Eatigo.com
               </a>
             </li>
           </ul>
@@ -70,7 +70,7 @@ const Footer = () => {
       </div>
 
       <hr />
-      <p className="footer-copyright">&copy; {currentYear} KhanaExpress. All Rights Reserved.</p>
+      <p className="footer-copyright">&copy; {currentYear} Eatigo. All Rights Reserved.</p>
     </footer>
   );
 };

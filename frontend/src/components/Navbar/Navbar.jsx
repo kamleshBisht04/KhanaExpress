@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { assets } from "../../assets/assets";
 import "./Navbar.css";
+import Logo from "../Logo/Logo";
 
 const navItems = [
   { id: 1, label: "Home", value: "home" },
@@ -14,8 +15,7 @@ const Navbar = () => {
 
   return (
     <div className="navbar" >
-      <img src={assets.logo} alt="logo" className="logo" />
-
+      <Logo/>
       <ul className="navbar-menu" >
         {navItems.map((item) => (
           <li key={item.id}>
