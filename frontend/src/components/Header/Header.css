@@ -1,6 +1,6 @@
 .header {
   height: 34vw;
-  margin: 1.875rem auto;
+  margin: 6rem auto;
   background: url("./header_img.jpg") no-repeat;
   background-size: contain;
   position: relative;
@@ -47,4 +47,37 @@
 
 .header-contents button:hover {
   background-color: var(--primary-color-dark);
+}
+
+.hamburger {
+  display: none;
+}
+
+/* for small laptops */
+
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 0rem 4%;
+  }
+
+  .navbar-menu {
+    gap: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .navbar-right {
+    gap: 1.5rem;
+  }
+
+  .search-container input {
+    padding: 0.625rem 0.625rem 0.625rem 2.5rem; /* left space for icon */
+  }
+
+  .search-container {
+    width: 10rem;
+  }
+  .navbar button {
+    padding: 0.5rem 1.4rem;
+    font-size: 0.9rem;
+  }
 }

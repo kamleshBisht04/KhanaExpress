@@ -2,6 +2,7 @@ import { useState } from "react";
 import { assets } from "../../assets/assets";
 import "./Navbar.css";
 import Logo from "../Logo/Logo";
+import { FiMenu, FiX, FiSearch } from "react-icons/fi";
 
 const navItems = [
   { id: 1, label: "Home", value: "home" },
@@ -12,11 +13,12 @@ const navItems = [
 
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState("home");
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="navbar" >
-      <Logo/>
-      <ul className="navbar-menu" >
+    <div className="navbar">
+      <Logo setActiveMenu={setActiveMenu} />
+      <ul className={`navbar-menu ${isOpen ? "open" : ""}`}>
         {navItems.map((item) => (
           <li key={item.id}>
             <a
@@ -31,7 +33,10 @@ const Navbar = () => {
       </ul>
 
       <div className="navbar-right">
-        <img src={assets.search_icon} alt="search" />
+        <div className="search-container">
+          <FiSearch className="search-icon" />
+          <input type="text" placeholder="Search food..." />
+        </div>
 
         <div className="navbar-search-icon">
           <img src={assets.basket_icon} alt="basket" />
@@ -39,7 +44,11 @@ const Navbar = () => {
         </div>
 
         <button>Sign In</button>
+        <button className="hamburger" onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? <FiX /> : <FiMenu />}
+        </button>
       </div>
+      {isOpen && <div className="overlay" onClick={() => setIsOpen(false)} />}
     </div>
   );
 };

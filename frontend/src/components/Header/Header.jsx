@@ -5,9 +5,9 @@ function Header() {
     <div className="header" id="home">
       <div className="header-contents">
         <h2>
-          Best Food Which Makes You 
+          Best Food Which Makes You
           <span>
-            <strong> Hungry</strong>
+            <strong> "Hungry"</strong>
           </span>
         </h2>
         <p>
