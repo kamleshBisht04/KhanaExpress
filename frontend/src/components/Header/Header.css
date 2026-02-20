@@ -1,27 +1,33 @@
 .header {
-  height: 34vw;
-  margin: 6rem auto;
-  background: url("./header_img.jpg") no-repeat;
-  background-size: contain;
-  position: relative;
+  margin: 6rem -1rem;
+  padding: 0% 6% 0 6%;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  align-items: center;
+  min-height: 75vh;
+  gap: 2rem;
+  background-color: #f9f8f6;
   border-radius: 0.9375rem;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.12);
+  position: relative;
+  width: 100%;
 }
 
+/* LEFT CONTENT */
 .header-contents {
-  position: absolute;
   display: flex;
   flex-direction: column;
-  align-items: start;
   gap: 2rem;
-  max-width: 60%;
-  bottom: 25%;
-  left: 6vw;
-  animation: fadeIn 3s;
+  max-width: 45rem; /* ✅ fixed */
+  width: 100%;
+  animation: fadeIn 1.5s ease;
+  margin-bottom: 4rem;
 }
 
 .header-contents h2 {
-  font-weight: 500;
-  font-size: max(4.6vw, 1.375rem);
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3.5rem); /* ✅ better responsive scaling */
+  line-height: 1.2;
 }
 
 .header-contents span {
@@ -30,54 +36,193 @@
 
 .header-contents p {
   font-size: 1.1rem;
-  line-height: 1.5;
-  max-width: 70%;
+  line-height: 1.6;
+  max-width: 90%;
 }
 
 .header-contents button {
+  width: 12rem;
   border: none;
   color: #ffffff;
-  font-weight: 400;
   border-radius: 3.125rem;
   font-size: 1.125rem;
   padding: 0.75rem 1.8rem;
   background-color: var(--primary-color);
-  /* background-color: #299475; */
+  cursor: pointer;
+  transition: 0.3s ease;
+  z-index: 3;
 }
 
 .header-contents button:hover {
   background-color: var(--primary-color-dark);
+  transform: translateY(-3px);
 }
 
-.hamburger {
-  display: none;
+/* RIGHT IMAGE */
+.header-image {
+  display: flex;
+  justify-content: center;
 }
 
-/* for small laptops */
+.header-image img {
+  width: 100%;
+  max-width: 500px;
+  z-index: 2;
+}
+
+.header-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 100%;
+  background: #f4f0e4;
+  z-index: 1;
+  clip-path: polygon(100% 0%, 100% 100%, 50% 100%, 0% 100%);
+}
 
 @media (max-width: 1024px) {
-  .navbar {
-    padding: 0rem 4%;
+  .header {
+    grid-template-columns: 1fr 1fr;
+    padding: 0 5%;
   }
 
-  .navbar-menu {
+  .header-contents h2 {
+    font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+    margin-top: 2rem;
+    /* width: 22rem; */
+    z-index: 5;
+  }
+
+  .header-image img {
+    max-width: 420px;
+  }
+
+  .header-contents p {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 8% 6%;
+    width: 100%;
+  }
+
+  .header-contents {
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .header-contents p {
+    max-width: 100%;
+    z-index: 3;
+  }
+
+  .header-image img {
+    max-width: 380px;
+  }
+
+  .header-image::before {
+    width: 100%;
+    clip-path: polygon(102% 3%, 121% 69%, 51% 100%, -55% 100%);
+    z-index: 1;
+  }
+}
+
+@media (max-width: 425px) {
+
+  .header {
+    margin: 5rem 0;   /* ❌ remove negative margin */
+    padding: 10% 5%;
+    grid-template-columns: 1fr;
     gap: 1.5rem;
+    min-height: auto;
+    text-align: center;
+    width: 22rem;
+  }
+
+  .header-contents {
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+  }
+
+  .header-contents h2 {
+    font-size: 1.6rem;
+    line-height: 1.3;
+  }
+
+  .header-contents p {
+    font-size: 0.95rem;
+    max-width: 100%;
+  }
+
+  .header-contents button {
+    width: 100%;
     font-size: 1rem;
   }
 
-  .navbar-right {
-    gap: 1.5rem;
+  .header-image img {
+    max-width: 260px;
   }
 
-  .search-container input {
-    padding: 0.625rem 0.625rem 0.625rem 2.5rem; /* left space for icon */
+  /* 🔥 safest solution */
+  .header-image::before {
+    display: none;
   }
 
-  .search-container {
-    width: 10rem;
-  }
-  .navbar button {
-    padding: 0.5rem 1.4rem;
-    font-size: 0.9rem;
-  }
 }
+
+
+@media (max-width: 320px) {
+
+  .header {
+    margin: 5.5rem 0;
+    padding: 12% 4%;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    min-height: auto;
+    text-align: center;
+  }
+
+  .header-contents {
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    max-width: 100%;
+  }
+
+  .header-contents h2 {
+    font-size: 1.4rem;
+    line-height: 1.3;
+  }
+
+  .header-contents p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    max-width: 100%;
+  }
+
+  .header-contents button {
+    width: 50%;
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .header-image img {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  /* remove background shape */
+  .header-image::before {
+    display: none;
+  }
+
+}
+

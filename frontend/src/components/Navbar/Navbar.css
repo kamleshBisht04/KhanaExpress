@@ -29,12 +29,13 @@
 .navbar-right {
   display: flex;
   gap: 2.5rem;
-  align-items: center;
+  align-items:center;
   position: relative;
 }
 
 .navbar .signin {
   background: transparent;
+  width: 7rem;
   font-size: 1rem;
   border: 0.0625rem solid var(--primary-color);
   padding: 0.625rem 1.875rem;
@@ -167,56 +168,39 @@
   }
 }
 /* for tablets  */
-
-/* Mobile: hamburger show */
 @media (max-width: 768px) {
-  .hamburger {
-    display: flex !important; /* show hamburger */
-    align-items: center;
-    justify-content: center;
-    font-size: 4.8rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--primary-color);
-    z-index: 1100;
+  .navbar {
+    justify-content: space-between;
+    padding: 0.6rem 3rem;
+    z-index: 1102;
   }
 
-  .navbar-right {
-    margin-left: 8rem;
-  }
-
-  .navbar .signin {
-    padding: 0.45rem 1.5rem;
-  }
-
-  .navbar-right .hamburger {
-    font-size: 1.5rem;
-    border: 1px solid #f6f5f5;
-    border-radius: 0.3375rem;
-    padding: 4px;
-  }
-
-  /* Slide menu */
   .navbar-menu {
     flex-direction: column;
     position: fixed;
+    top: 0;
     right: -100%;
     height: 100vh;
-    width: 25%;
+    width: 70%;
     background: white;
-    padding: 3rem 2rem;
+    padding: 5rem 2rem;
     gap: 2rem;
-    z-index: 1100;
     transition: right 0.4s ease;
     box-shadow: -5px 0 20px rgba(0, 0, 0, 0.08);
+    z-index: 1100;
   }
 
   .navbar-menu.open {
     right: 0;
   }
 
-  /* Overlay */
+  .navbar-right {
+    margin-left: 0; /* remove 8rem */
+  }
+
+  .search-container {
+    display: none;
+  }
   .overlay {
     position: fixed;
     top: 0;
@@ -227,7 +211,23 @@
     background: rgba(0, 0, 0, 0.2);
     z-index: 1050;
   }
+
+  .hamburger {
+    display: block;
+    font-size: 1.6rem;
+  }
 }
+
+/* Small devices */
+/* @media (max-width: 425px) {
+  .navbar-menu {
+    width: 80%;
+  }
+
+  .navbar .logo {
+    width: 7rem;
+  }
+} */
 
 /* 425px se chote screens ke liye */
 @media (max-width: 425px) {
@@ -250,5 +250,13 @@
 
   .navbar-basket-icon img {
     width: 1.5rem;
+  }
+
+  .navbar .search-container {
+    display: none;
+  }
+
+  .navbar-right .signin {
+    width: 7rem;
   }
 }

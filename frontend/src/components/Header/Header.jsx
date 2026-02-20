@@ -16,6 +16,10 @@ function Header() {
         </p>
         <button>Book yummy</button>
       </div>
+      <div className="header-image">
+        <img src="./header_img.png" alt="Delicious food" />
+      </div>
+      
     </div>
   );
 }
