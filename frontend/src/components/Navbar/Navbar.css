@@ -30,9 +30,10 @@
   display: flex;
   gap: 2.5rem;
   align-items: center;
+  position: relative;
 }
 
-.navbar button {
+.navbar .signin {
   background: transparent;
   font-size: 1rem;
   border: 0.0625rem solid var(--primary-color);
@@ -41,6 +42,7 @@
   transition: 0.3s ease-in-out;
   background-color: var(--primary-color);
   color: #ffffff;
+  cursor: pointer;
 }
 
 .navbar button:hover {
@@ -96,11 +98,12 @@
   color: #888;
 }
 
-.navbar-search-icon {
+.navbar-basket-icon {
   position: relative;
+  cursor: pointer;
 }
 
-.navbar-search-icon .dot {
+.navbar-basket-icon .dot {
   position: absolute;
   width: 0.625rem;
   height: 0.625rem;
@@ -115,4 +118,137 @@
 #app-download,
 #footer {
   scroll-margin-top: 6rem;
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--primary-color);
+  z-index: 1100;
+  position: relative;
+}
+
+@media (max-width: 1024px) {
+  /* Reduce spacing and font size */
+  .navbar {
+    padding: 0.6rem 1rem;
+    height: 4.2rem;
+  }
+
+  .navbar-menu {
+    gap: 1rem;
+    font-size: 1rem;
+  }
+
+  .navbar-right {
+    gap: 1.5rem;
+  }
+
+  .search-container {
+    width: 11rem;
+  }
+
+  .navbar .signin {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+    border-radius: 2.5rem;
+  }
+
+  .search-container input {
+    width: 92%;
+    height: 2.2rem;
+  }
+
+  .navbar .logo {
+    width: 8.5rem;
+  }
+}
+/* for tablets  */
+
+/* Mobile: hamburger show */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex !important; /* show hamburger */
+    align-items: center;
+    justify-content: center;
+    font-size: 4.8rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--primary-color);
+    z-index: 1100;
+  }
+
+  .navbar-right {
+    margin-left: 8rem;
+  }
+
+  .navbar .signin {
+    padding: 0.45rem 1.5rem;
+  }
+
+  .navbar-right .hamburger {
+    font-size: 1.5rem;
+    border: 1px solid #f6f5f5;
+    border-radius: 0.3375rem;
+    padding: 4px;
+  }
+
+  /* Slide menu */
+  .navbar-menu {
+    flex-direction: column;
+    position: fixed;
+    right: -100%;
+    height: 100vh;
+    width: 25%;
+    background: white;
+    padding: 3rem 2rem;
+    gap: 2rem;
+    z-index: 1100;
+    transition: right 0.4s ease;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .navbar-menu.open {
+    right: 0;
+  }
+
+  /* Overlay */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 1050;
+  }
+}
+
+/* 425px se chote screens ke liye */
+@media (max-width: 425px) {
+  .navbar .navbar-right .search-container {
+    display: none;
+  }
+
+  .navbar .logo {
+    width: 7.5rem;
+  }
+
+  .navbar-right {
+    margin-left: 0;
+  }
+
+  .navbar-menu {
+    width: 50%;
+    height: 100%;
+  }
+
+  .navbar-basket-icon img {
+    width: 1.5rem;
+  }
 }
