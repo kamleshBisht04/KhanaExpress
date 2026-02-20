@@ -4,6 +4,7 @@ import "./Navbar.css";
 import Logo from "../Logo/Logo";
 import { FiMenu, FiSearch, FiX } from "react-icons/fi";
 import useStore from "../../context/useStore";
+import { useNavigate } from "react-router-dom";
 
 const navItems = [
   { id: 1, label: "Home", value: "home" },
@@ -16,6 +17,7 @@ const Navbar = () => {
   const { search, setSearch } = useStore();
   const [activeMenu, setActiveMenu] = useState("home");
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="navbar">
@@ -52,7 +54,9 @@ const Navbar = () => {
           <div className="dot"></div>
         </div>
 
-        <button className="signin">Sign In</button>
+        <button className="signin" onClick={() => navigate("/login")}>
+          Sign In
+        </button>
         <button className="hamburger" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <FiX /> : <FiMenu />}
         </button>

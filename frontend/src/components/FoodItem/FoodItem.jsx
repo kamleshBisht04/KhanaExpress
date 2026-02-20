@@ -1,8 +1,9 @@
 import "./FoodItem.css";
 import { assets } from "../../assets/assets";
 import useStore from "../../context/useStore";
+import Rating from "../Rating/Rating";
 
-const FoodItem = ({ id, name, description, price, image }) => {
+const FoodItem = ({ id, name, description, price, image, rating }) => {
   const { cartItems, addToCart, removeFromCart } = useStore();
 
   return (
@@ -22,7 +23,7 @@ const FoodItem = ({ id, name, description, price, image }) => {
       <div className="food-item-info">
         <div className="food-item-name-rating">
           <p>{name}</p>
-          <img src={assets.rating_starts} alt="star rating" />
+          <Rating rating={rating} />
         </div>
         <p className="food-item-desc">{description}</p>
         <p className="food-item-price">₹ {price}</p>
