@@ -24,6 +24,7 @@
   display: flex;
   gap: 1.75rem;
   font-size: 1.125rem;
+  color: #BADFDB;
 }
 
 .navbar-right {
@@ -53,6 +54,7 @@
 .navbar-menu a {
   position: relative;
   color: var(--primary-text-color);
+  color: #5D866C;
   padding: 0.1rem;
   text-decoration: none;
 }

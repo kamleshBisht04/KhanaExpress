@@ -1,8 +1,11 @@
 import React from "react";
 import "./ExploreMenu.css";
 import { menu_list } from "../../assets/assets";
+import useStore from "../../context/useStore";
 
-const ExploreMenu = ({ category, setCategory }) => {
+const ExploreMenu = () => {
+   const {category, setCategory} =useStore();
+   
   const handleSelectCategory = (item) => {
     setCategory((prev) => (prev === item?.menu_name ? "All" : item.menu_name));
   };
