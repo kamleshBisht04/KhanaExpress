@@ -9,9 +9,29 @@
 
 .food-display-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
   margin-top: 1.875rem;
-  gap:1.875rem;
-  row-gap: 3.125rem;
-  /* column-gap: 3.125rem; */
+  gap: 3rem;
+}
+
+
+/* 1024px - Small Laptop / Large Tablet */
+@media (max-width: 1024px) {
+  .food-display-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 768px - Tablet */
+@media (max-width: 768px) {
+  .food-display-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 480px - Mobile */
+@media (max-width: 480px) {
+  .food-display-list {
+    grid-template-columns: 1fr;
+  }
 }
