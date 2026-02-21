@@ -6,12 +6,14 @@ import Login from "./components/LogIn/LogIn";
 import useStore from "./context/useStore";
 import Cart from "./pages/Cart/Cart";
 import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
+import ScrollHandler from "./components/Navbar/ScrollHandler/ScrollHandler";
 
 function App() {
   const { showLogin } = useStore();
 
   return (
     <>
+      <ScrollHandler />
       {showLogin && <Login />}
       <header>
         <Navbar />
@@ -23,7 +25,9 @@ function App() {
           <Route path="/order" element={<PlaceOrder />} />
         </Routes>
       </main>
-      <Footer />
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 }

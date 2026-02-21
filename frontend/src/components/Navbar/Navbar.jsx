@@ -4,6 +4,7 @@ import "./Navbar.css";
 import Logo from "../Logo/Logo";
 import { FiMenu, FiSearch, FiX } from "react-icons/fi";
 import useStore from "../../context/useStore";
+import { Link } from "react-router-dom";
 
 const navItems = [
   { id: 1, label: "Home", value: "home" },
@@ -19,18 +20,31 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      <Logo />
+      <Link
+        to="/"
+        onClick={() =>
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          })
+        }
+      >
+        <Logo />
+      </Link>
 
       <ul className={`navbar-menu ${isOpen ? "open" : ""}`}>
         {navItems.map((item) => (
           <li key={item.id}>
-            <a
-              href={`#${item.value}`}
-              onClick={() => setActiveMenu(item.value)}
+            <Link
+              to={`/#${item.value}`}
+              onClick={() => {
+                setActiveMenu(item.value);
+                setIsOpen(false);
+              }}
               className={activeMenu === item.value ? "active" : ""}
             >
               {item.label}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
@@ -48,7 +62,9 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-basket-icon">
-          <img src={assets.basket_icon} alt="basket" />
+          <Link to="/cart">
+            <img src={assets.basket_icon} alt="basket" />
+          </Link>
           <div className="dot"></div>
         </div>
 
