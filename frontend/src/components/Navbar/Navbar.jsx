@@ -19,7 +19,7 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      <Logo setActiveMenu={setActiveMenu} />
+      <Logo />
 
       <ul className={`navbar-menu ${isOpen ? "open" : ""}`}>
         {navItems.map((item) => (
