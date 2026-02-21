@@ -1,16 +1,20 @@
 import { assets } from "../../assets/assets";
 import "./Logo.css";
-const Logo = ({ setActiveMenu }) => {
+
+const Logo = ({ setActiveMenu, onClick }) => {
+  const handleClick = () => {
+    if (setActiveMenu) setActiveMenu("home");
+    if (onClick) onClick();
+  };
+
   return (
-    <a href="#home">
-      <img
-        onClick={() => setActiveMenu("home")}
-        src={assets.logo}
-        alt="Eatigo logo"
-        className="logo"
-        aria-label="Go to homepage"
-      />
-    </a>
+    <img
+      src={assets.logo}
+      alt="Eatigo logo"
+      className="logo"
+      aria-label="Go to homepage"
+      onClick={handleClick}
+    />
   );
 };
 

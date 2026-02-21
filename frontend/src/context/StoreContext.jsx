@@ -7,6 +7,8 @@ function StoreContextProvider({ children }) {
   const [cartItems, setCartItems] = useState({});
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
+  const [showLogin, setShowLogin] = useState(false);
+
 
   const filteredFoods = food_list.filter((item) => {
     const matchesCategory = category === "All" || category === item.category;
@@ -57,7 +59,10 @@ function StoreContextProvider({ children }) {
         setSearch,
         category,
         setCategory,
-        filteredFoods
+        filteredFoods,
+        showLogin,
+        setShowLogin,
+        
       }}
     >
       {children}
