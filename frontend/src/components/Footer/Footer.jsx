@@ -1,6 +1,6 @@
 import "./Footer.css";
 import { assets } from "../../assets/assets";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Logo from "../Logo/Logo";
 
 const Footer = () => {
@@ -10,7 +10,9 @@ const Footer = () => {
     <footer className="footer" id="footer">
       <div className="footer-content">
         <div className="footer-content-left">
-          <Logo />
+          <Link to="#home">
+            <Logo />
+          </Link>
           <p>
             Eatigo delivers fresh and delicious food at your doorstep. Fast delivery, secure
             payments, and best quality guaranteed.

@@ -3,7 +3,7 @@ import "./Login.css";
 import useStore from "../../context/useStore";
 import Logo from "../Logo/Logo";
 import { IoClose } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -28,12 +28,9 @@ const Login = () => {
   return (
     <div className="login">
       <div className="login-container">
-        <Logo
-          onClick={() => {
-            setShowLogin(false);
-            navigate("/");
-          }}
-        />
+        <Link to="/#home" onClick={() => setShowLogin(false)}>
+          <Logo />
+        </Link>
         <h2>{isSignup ? "Create Account " : "Welcome to Eatigo"}</h2>
         <button className="close-btn" onClick={() => setShowLogin(false)}>
           <IoClose className="close" />
