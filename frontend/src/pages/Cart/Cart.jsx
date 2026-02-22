@@ -5,7 +5,16 @@ import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const navigate = useNavigate();
-  const { food_list, cartItems, removeFromCart, addToCart } = useStore();
+  const { food_list, cartItems, removeFromCart, addToCart, removeItemCompletely } = useStore();
+
+  const subtotal = food_list.reduce(
+    (total, item) => (cartItems[item._id] > 0 ? total + item.price * cartItems[item._id] : total),
+    0,
+  );
+
+  const deliveryFee = subtotal > 200 ? 0 : 40;
+  const totalAmount = subtotal + deliveryFee;
+
   return (
     <div className="cart">
       <div className="cart-items">
@@ -34,8 +43,8 @@ const Cart = () => {
                     <button onClick={() => addToCart(item._id)}>+</button>
                   </div>
                   <p className="item-title"> ₹ {item.price * cartItems[item._id]}</p>
-                  <p className="cross" onClick={() => removeFromCart(item._id)}>
-                    X
+                  <p className="cross" onClick={() => removeItemCompletely(item._id)}>
+                    x
                   </p>
                 </div>
                 <br />
@@ -44,6 +53,7 @@ const Cart = () => {
             );
           }
         })}
+        <p>⭐Delivery Free order price is more than 200</p>
       </div>
       {/* promo section and place order section */}
       <div className="cart-bottom">
@@ -52,17 +62,17 @@ const Cart = () => {
           <div>
             <div className="cart-total-details">
               <p>Subtotals</p>
-              <p>₹</p>
+              <p>₹ {subtotal}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>₹</p>
+              <p>₹ {deliveryFee}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>₹</b>
+              <b>₹ {totalAmount}</b>
             </div>
           </div>
           <button onClick={() => navigate("/order")}>PROCEED TO CHECKOUT</button>

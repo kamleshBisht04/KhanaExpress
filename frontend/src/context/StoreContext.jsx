@@ -9,7 +9,6 @@ function StoreContextProvider({ children }) {
   const [category, setCategory] = useState("All");
   const [showLogin, setShowLogin] = useState(false);
 
-
   const filteredFoods = food_list.filter((item) => {
     const matchesCategory = category === "All" || category === item.category;
 
@@ -43,9 +42,15 @@ function StoreContextProvider({ children }) {
     });
   };
 
-  useEffect(() => {
-    console.log(cartItems);
-  }, [cartItems]);
+  const removeItemCompletely = (id) => {
+    setCartItems((prev) => {
+      const updated = { ...prev };
+      delete updated[id]; // ✅ completely remove
+      return updated;
+    });
+  };
+
+  useEffect(() => {}, [cartItems]);
 
   return (
     <StoreContext.Provider
@@ -55,6 +60,7 @@ function StoreContextProvider({ children }) {
         setCartItems,
         addToCart,
         removeFromCart,
+        removeItemCompletely,
         search,
         setSearch,
         category,
@@ -62,7 +68,6 @@ function StoreContextProvider({ children }) {
         filteredFoods,
         showLogin,
         setShowLogin,
-        
       }}
     >
       {children}
