@@ -106,14 +106,25 @@
   cursor: pointer;
 }
 
-.navbar-basket-icon .dot {
+/* .shoping-bag{
+  size: 1.875rem;
+} */
+
+.cart-count {
   position: absolute;
-  width: 0.625rem;
-  height: 0.625rem;
-  background-color: var(--primary-color);
-  border-radius: 50%;
-  top: -0.3rem;
-  right: -0.3rem;
+  top: -6px;
+  right: -8px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
 }
 
 #home,
