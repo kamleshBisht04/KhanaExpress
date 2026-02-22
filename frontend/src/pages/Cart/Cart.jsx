@@ -1,19 +1,34 @@
-import React from "react";
-import "./Cart.css";
+import { useState } from "react";
 import useStore from "../../context/useStore";
 import { useNavigate } from "react-router-dom";
+import { promoCodes } from "../../util/constant";
+import RandomPromoSuggestion from "../../components/RandomPromoSuggestion/RandomPromoSuggestion";
+import "./Cart.css";
 
 const Cart = () => {
   const navigate = useNavigate();
-  const { food_list, cartItems, removeFromCart, addToCart, removeItemCompletely } = useStore();
+  const [inputCode, setInputCode] = useState("");
+  const {
+    food_list,
+    cartItems,
+    removeFromCart,
+    addToCart,
+    removeItemCompletely,
+    promo,
+    applyPromo,
+    discountCalculator,
+  } = useStore();
 
   const subtotal = food_list.reduce(
-    (total, item) => (cartItems[item._id] > 0 ? total + item.price * cartItems[item._id] : total),
+    (total, item) => total + item.price * (cartItems[item._id] || 0),
     0,
   );
 
-  const deliveryFee = subtotal > 200 ? 0 : 40;
-  const totalAmount = subtotal + deliveryFee;
+  const deliveryFee = subtotal > 0 && subtotal <= 200 ? 40 : 0;
+
+  const discount = discountCalculator(subtotal);
+
+  const finalTotal = subtotal + deliveryFee - discount;
 
   return (
     <div className="cart">
@@ -28,11 +43,11 @@ const Cart = () => {
         </div>
         <br />
         <hr />
-        {food_list.map((item, index) => {
+        {food_list.map((item) => {
           if (cartItems[item._id] > 0) {
             return (
               <>
-                <div key={index} className="cart-items-title cart-items-item">
+                <div key={item._id} className="cart-items-title cart-items-item">
                   <img src={item.image} alt={item.name} />
                   <p className="item-title">{item.name}</p>
                   <p>₹ {item.price}</p>
@@ -72,18 +87,25 @@ const Cart = () => {
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>₹ {totalAmount}</b>
+              <b>₹ {finalTotal}</b>
             </div>
           </div>
           <button onClick={() => navigate("/order")}>PROCEED TO CHECKOUT</button>
         </div>
         <div className="cart-promocode">
           <div>
+            <RandomPromoSuggestion promoCodes={promoCodes} />
             <p>If you have a promocode, Enter it here</p>
             <div className="cart-promocode-input">
-              <input type="text" placeholder="promo code" />
-              <button>Submit</button>
+              <input
+                type="text"
+                placeholder="promo code"
+                value={inputCode}
+                onChange={(e) => setInputCode(e.target.value)}
+              />
+              <button onClick={() => applyPromo(inputCode, subtotal)}>Submit</button>
             </div>
+            {promo.error && <p className="promo-error">{promo.error}</p>}
           </div>
         </div>
       </div>

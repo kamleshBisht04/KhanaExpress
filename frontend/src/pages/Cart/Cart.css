@@ -44,6 +44,19 @@
   background-color: var(--primary-color-dark);
 }
 
+.cart-promocode .promo-error {
+  color: var(--primary-color-dark);
+  margin-top: 2rem;
+  font-weight: 500;
+}
+
+.promo-code {
+  background-color: #ece7d1;
+  color: var(--primary-color);
+  padding: 0.125rem 0.3125rem;
+  border-radius: 0.1875rem;
+}
+
 .item-quantity {
   margin-left: 2rem;
 }
@@ -61,7 +74,7 @@
   width: 20px;
   height: 20px;
   border: none;
-  background-color: #F3F4F4;
+  background-color: #f3f4f4;
   color: black;
   font-size: 18px;
   cursor: pointer;
