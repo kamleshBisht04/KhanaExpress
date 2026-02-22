@@ -1,14 +1,19 @@
 import { useState } from "react";
-import useStore from "../../context/useStore";
 import { useNavigate } from "react-router-dom";
+import useStore from "../../context/useStore";
 import "./PlaceOrder.css";
+import { getCartCalculations } from "../../util/utils";
 
 const PlaceOrder = () => {
   const navigate = useNavigate();
   const { food_list, cartItems, discountCalculator } = useStore();
+  const { subtotal, deliveryFee, discount, finalTotal } = getCartCalculations(
+    food_list,
+    cartItems,
+    discountCalculator,
+  );
 
   const [paymentMethod, setPaymentMethod] = useState("cod");
-
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -16,15 +21,6 @@ const PlaceOrder = () => {
     city: "",
     pincode: "",
   });
-
-  const subtotal = food_list.reduce(
-    (total, item) => total + item.price * (cartItems[item._id] || 0),
-    0
-  );
-
-  const deliveryFee = subtotal > 0 && subtotal <= 200 ? 40 : 0;
-  const discount = discountCalculator(subtotal);
-  const finalTotal = subtotal + deliveryFee - discount;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,10 +44,8 @@ const PlaceOrder = () => {
 
   return (
     <div className="checkout-container">
-
       {/* LEFT SECTION */}
       <div className="checkout-left">
-
         {/* Delivery Card */}
         <div className="checkout-card">
           <h3>Delivery Details</h3>

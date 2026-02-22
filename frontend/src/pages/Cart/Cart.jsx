@@ -1,7 +1,8 @@
-import { useState } from "react";
-import useStore from "../../context/useStore";
+import React, { useState, useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { promoCodes } from "../../util/constant";
+import { getCartCalculations } from "../../util/utils";
+import useStore from "../../context/useStore";
 import RandomPromoSuggestion from "../../components/RandomPromoSuggestion/RandomPromoSuggestion";
 import "./Cart.css";
 
@@ -19,16 +20,15 @@ const Cart = () => {
     discountCalculator,
   } = useStore();
 
-  const subtotal = food_list.reduce(
-    (total, item) => total + item.price * (cartItems[item._id] || 0),
-    0,
-  );
+  const { subtotal, deliveryFee, discount, finalTotal } = useMemo(() => {
+    return getCartCalculations(food_list, cartItems, discountCalculator);
+  }, [food_list, cartItems, discountCalculator]);
 
-  const deliveryFee = subtotal > 0 && subtotal <= 200 ? 40 : 0;
+  const cartProducts = food_list.filter((item) => cartItems[item._id] && cartItems[item._id] > 0);
 
-  const discount = discountCalculator(subtotal);
-
-  const finalTotal = subtotal + deliveryFee - discount;
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="cart">
@@ -43,32 +43,37 @@ const Cart = () => {
         </div>
         <br />
         <hr />
-        {food_list.map((item) => {
-          if (cartItems[item._id] > 0) {
-            return (
-              <>
-                <div key={item._id} className="cart-items-title cart-items-item">
-                  <img src={item.image} alt={item.name} />
-                  <p className="item-title">{item.name}</p>
-                  <p>₹ {item.price}</p>
-                  {/* <p className="item-quantity">{cartItems[item._id]}</p> */}
-                  <div className="quantity-control">
-                    <button onClick={() => removeFromCart(item._id)}>-</button>
-                    <span>{cartItems[item._id]}</span>
-                    <button onClick={() => addToCart(item._id)}>+</button>
-                  </div>
-                  <p className="item-title"> ₹ {item.price * cartItems[item._id]}</p>
-                  <p className="cross" onClick={() => removeItemCompletely(item._id)}>
-                    x
-                  </p>
+
+        {cartProducts.length === 0 && <p className="empty-cart">Your cart is empty 🛒</p>}
+
+        {cartProducts.map((item) => {
+          return (
+            <React.Fragment key={item._id}>
+              <div className="cart-items-title cart-items-item">
+                <img src={item.image} alt={item.name} />
+                <p className="item-title">{item.name}</p>
+                <p>₹ {item.price}</p>
+                {/* <p className="item-quantity">{cartItems[item._id]}</p> */}
+                <div className="quantity-control">
+                  <button onClick={() => removeFromCart(item._id)}>-</button>
+                  <span>{cartItems[item._id]}</span>
+                  <button onClick={() => addToCart(item._id)}>+</button>
                 </div>
-                <br />
-                <hr />
-              </>
-            );
-          }
+                <p className="item-title"> ₹ {item.price * cartItems[item._id]}</p>
+                <p className="cross" onClick={() => removeItemCompletely(item._id)}>
+                  x
+                </p>
+              </div>
+              <br />
+              <hr />
+            </React.Fragment>
+          );
         })}
-        <p>⭐Delivery Free order price is more than 200</p>
+        {subtotal < 200 && subtotal > 0 && (
+          <p className="delivery-msg">Add ₹ {200 - subtotal} more for FREE delivery 🚚</p>
+        )}
+
+        {subtotal >= 200 && <p className="free-delivery">🎉 You got FREE delivery!</p>}
       </div>
       {/* promo section and place order section */}
       <div className="cart-bottom">
@@ -84,13 +89,23 @@ const Cart = () => {
               <p>Delivery Fee</p>
               <p>₹ {deliveryFee}</p>
             </div>
-            <hr />
+            {discount > 0 && (
+              <>
+                <div className="cart-total-details">
+                  <p>Discount</p>
+                  <p>- ₹ {discount}</p>
+                </div>
+                <hr />
+              </>
+            )}
             <div className="cart-total-details">
               <b>Total</b>
               <b>₹ {finalTotal}</b>
             </div>
           </div>
-          <button onClick={() => navigate("/order") }>PROCEED TO CHECKOUT</button>
+          <button disabled={subtotal === 0} onClick={() => navigate("/order")}>
+            PROCEED TO CHECKOUT
+          </button>
         </div>
         <div className="cart-promocode">
           <div>
