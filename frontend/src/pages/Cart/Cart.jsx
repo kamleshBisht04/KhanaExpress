@@ -90,7 +90,7 @@ const Cart = () => {
               <b>₹ {finalTotal}</b>
             </div>
           </div>
-          <button onClick={() => navigate("/order")}>PROCEED TO CHECKOUT</button>
+          <button onClick={() => navigate("/order") }>PROCEED TO CHECKOUT</button>
         </div>
         <div className="cart-promocode">
           <div>
@@ -105,7 +105,7 @@ const Cart = () => {
               />
               <button onClick={() => applyPromo(inputCode, subtotal)}>Submit</button>
             </div>
-            {promo.error && <p className="promo-error">{promo.error}</p>}
+            {inputCode && promo.error && <p className="promo-error">{promo.error}</p>}
           </div>
         </div>
       </div>

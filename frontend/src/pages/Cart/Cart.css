@@ -74,8 +74,10 @@
   width: 20px;
   height: 20px;
   border: none;
-  background-color: #f3f4f4;
-  color: black;
+  /* background-color: #f3f4f4; */
+  background-color: #1A3263;
+  /* color: black; */
+  color: white;
   font-size: 18px;
   cursor: pointer;
   border-radius: 50%;

@@ -64,16 +64,16 @@ const Navbar = () => {
           />
         </div>
 
-        <div className="navbar-basket-icon">
-          <Link to="/cart">
-            <HiShoppingBag size={23}/>
+        <Link to="/cart">
+          <div className="navbar-basket-icon">
+            <HiShoppingBag size={23} />
             {/* <img src={assets.basket_icon} alt="basket" /> */}
-          </Link>
 
-          {totalItems > 0 && (
-            <div className="cart-count">{totalItems > 99 ? "99+" : totalItems}</div>
-          )}
-        </div>
+            {totalItems > 0 && (
+              <div className="cart-count">{totalItems > 99 ? "99+" : totalItems}</div>
+            )}
+          </div>
+        </Link>
 
         <button className="signin" onClick={() => setShowLogin(true)}>
           Sign In

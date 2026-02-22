@@ -81,7 +81,7 @@
 
 .search-container input {
   width: 100%;
-  padding: 0.75rem 0.75rem 0.75rem 2.5rem; /* left space for icon */
+  padding: 0.5rem 0.75rem 0.75rem 2.5rem; /* left space for icon */
   border-radius: 3.125rem;
   border: 0.0625rem solid #ccc;
   outline: none;
