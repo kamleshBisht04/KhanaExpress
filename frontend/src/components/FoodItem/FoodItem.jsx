@@ -1,7 +1,7 @@
 import "./FoodItem.css";
-import { assets } from "../../assets/assets";
 import useStore from "../../context/useStore";
 import Rating from "../Rating/Rating";
+import { assets } from "../../../public/assets/assets";
 
 const FoodItem = ({ id, name, description, price, image, rating }) => {
   const { cartItems, addToCart, removeFromCart } = useStore();

@@ -1,7 +1,7 @@
 import React from "react";
 import "./ExploreMenu.css";
-import { menu_list } from "../../assets/assets";
 import useStore from "../../context/useStore";
+import { menu_list } from "../../../public/assets/assets";
 
 const ExploreMenu = () => {
    const {category, setCategory} =useStore();
