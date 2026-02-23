@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Login.css";
+import "./LogIn.css";
 import useStore from "../../context/useStore";
 import Logo from "../Logo/Logo";
 import { IoClose } from "react-icons/io5";
