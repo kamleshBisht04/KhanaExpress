@@ -1,4 +1,4 @@
-import { assets } from "../../../public/assets/assets";
+import { assets } from "../../assets/assets";
 import "./Logo.css";
 
 const Logo = () => {

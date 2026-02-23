@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import { promoCodes } from "../util/constant";
-import { food_list } from "../../public/assets/assets";
+import { food_list } from "../assets/assets";
 
 const StoreContext = createContext(null);
 
