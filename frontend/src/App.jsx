@@ -7,12 +7,21 @@ import useStore from "./context/useStore";
 import Cart from "./pages/Cart/Cart";
 import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
 import ScrollHandler from "./components/Navbar/ScrollHandler/ScrollHandler";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const { showLogin } = useStore();
 
   return (
     <>
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          className: "micro-toast",
+          success: { className: "micro-toast success" },
+          error: { className: "micro-toast error" },
+        }}
+      />
       <ScrollHandler />
       {showLogin && <Login />}
       <header>

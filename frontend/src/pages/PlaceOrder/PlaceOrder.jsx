@@ -3,10 +3,11 @@ import { useNavigate } from "react-router-dom";
 import useStore from "../../context/useStore";
 import "./PlaceOrder.css";
 import { getCartCalculations } from "../../util/utils";
+import toast from "react-hot-toast";
 
 const PlaceOrder = () => {
   const navigate = useNavigate();
-  const { food_list, cartItems, discountCalculator } = useStore();
+  const { food_list, cartItems, discountCalculator ,setCartItems} = useStore();
   const { subtotal, deliveryFee, discount, finalTotal } = getCartCalculations(
     food_list,
     cartItems,
@@ -28,19 +29,23 @@ const PlaceOrder = () => {
   };
 
   const handleOrder = () => {
-    if (subtotal === 0) {
-      alert("Your cart is empty!");
-      return;
-    }
+  if (subtotal === 0) {
+    toast.error("Your cart is empty!");
+    return;
+  }
 
-    if (!formData.name || !formData.phone || !formData.address) {
-      alert("Please fill all required fields");
-      return;
-    }
+  if (!formData.name || !formData.phone || !formData.address) {
+    toast.error("Please fill all required fields");
+    return;
+  }
 
-    alert("🎉 Order Placed Successfully!");
+  toast.success("🎉 Order Placed Successfully!");
+  setCartItems({});
+
+  setTimeout(() => {
     navigate("/");
-  };
+  }, 1500);
+};
 
   return (
     <div className="checkout-container">
@@ -49,9 +54,32 @@ const PlaceOrder = () => {
         {/* Delivery Card */}
         <div className="checkout-card">
           <h3>Delivery Details</h3>
-          <input name="name" placeholder="Full Name" onChange={handleChange} />
-          <input name="phone" placeholder="Phone Number" onChange={handleChange} />
-          <input name="address" placeholder="Full Address" onChange={handleChange} />
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            placeholder="Full Name"
+            onChange={handleChange}
+            required
+          />
+
+          <input
+            type="tel"
+            name="phone"
+            value={formData.phone}
+            placeholder="Phone Number"
+            onChange={handleChange}
+            required
+          />
+
+          <input
+            type="text"
+            name="address"
+            value={formData.address}
+            placeholder="Full Address"
+            onChange={handleChange}
+            required
+          />
           <div className="row">
             <input name="city" placeholder="City" onChange={handleChange} />
             <input name="pincode" placeholder="Pincode" onChange={handleChange} />
