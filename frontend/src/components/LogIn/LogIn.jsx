@@ -3,10 +3,9 @@ import "./Login.css";
 import useStore from "../../context/useStore";
 import Logo from "../Logo/Logo";
 import { IoClose } from "react-icons/io5";
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 const Login = () => {
-  const navigate = useNavigate();
   const { setShowLogin } = useStore();
   const [isSignup, setIsSignup] = useState(false);
 

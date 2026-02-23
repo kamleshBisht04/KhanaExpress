@@ -1,7 +1,3 @@
-[build]
-  publish = "build"  # or "dist" for Vite
-  command = "npm run build"
-
 [[redirects]]
   from = "/*"
   to = "/index.html"
