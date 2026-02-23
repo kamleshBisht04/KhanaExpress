@@ -1,5 +1,6 @@
 import React from "react";
 import "./Header.css";
+import header_img from "../../public/header_img.png";
 import useStore from "../../context/useStore";
 function Header() {
   const { setShowLogin } = useStore();
@@ -20,7 +21,7 @@ function Header() {
         <button onClick={() => setShowLogin(true)}>Book yummy</button>
       </div>
       <div className="header-image">
-        <img src="./header_img.png" alt="Delicious food" />
+        <img src={header_img} alt="Delicious food" />
       </div>
     </div>
   );

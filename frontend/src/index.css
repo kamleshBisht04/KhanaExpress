@@ -8,7 +8,7 @@
 }
 
 * {
-  bottom: 0;
+  padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: Outfit, "Inter", sans-serif;
@@ -20,8 +20,10 @@ body {
 }
 
 .app {
-  width: 81%;
-  margin: 6rem 11rem;
+  width: 90%;
+  max-width: 1200px;
+  margin: 6rem auto;
+  min-height: 100vh;
 }
 
 a {
@@ -86,5 +88,19 @@ ul {
   }
   to {
     width: 0%;
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .app {
+    margin: 4rem auto;   /* thoda kam top margin */
+  }
+}
+
+@media (max-width: 768px) {
+  .app {
+    margin: 2rem auto;   /* mobile ke liye top margin aur center */
+    width: 95%;          /* mobile par width thodi zyada le lo */
   }
 }

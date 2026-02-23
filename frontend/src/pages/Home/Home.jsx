@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "./Home.css";
 import Header from "../../components/Header/Header";
 import ExploreMenu from "../../components/ExploreMenu/ExploreMenu";
@@ -7,14 +6,12 @@ import AppDownload from "../../components/AppDownload/AppDownload";
 import TopRatedSection from "../../components/TopRatedSection/TopRatedSection";
 
 function Home() {
-  const [category, setCategory] = useState("All");
-
   return (
     <div>
       <Header />
-      <TopRatedSection/>
-      <ExploreMenu category={category} setCategory={setCategory} />
-      <FoodDisplay category={category} />
+      <TopRatedSection />
+      <ExploreMenu />
+      <FoodDisplay />
       <AppDownload />
     </div>
   );
