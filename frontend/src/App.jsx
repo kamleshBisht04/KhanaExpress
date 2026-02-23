@@ -17,6 +17,7 @@ function App() {
       <Toaster
         position="top-right"
         toastOptions={{
+          duration: 3000,
           className: "micro-toast",
           success: { className: "micro-toast success" },
           error: { className: "micro-toast error" },

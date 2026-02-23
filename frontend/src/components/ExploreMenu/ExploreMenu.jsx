@@ -11,7 +11,7 @@ const ExploreMenu = () => {
   };
 
   return (
-    <div className="explore-menu" id="explore-menu">
+    <div className="explore-menu" >
       <h2>Explore our menu</h2>
       <p className="explore-menu-text">
         Choose from a diverse menu featuring a detectable array of dishes. Our mission is to satisfy

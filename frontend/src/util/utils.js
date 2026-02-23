@@ -19,3 +19,16 @@ export const getCartCalculations = (foodList, cartItems, discountCalculator) => 
     finalTotal,
   };
 };
+
+
+export const getTopRatedUnder200 = (food_list) => {
+  if (!food_list || food_list.length === 0) return [];
+
+  const filtered = food_list.filter(
+    (item) => item.rating >= 4 && item.price <= 200
+  );
+
+  return filtered
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 8);
+};

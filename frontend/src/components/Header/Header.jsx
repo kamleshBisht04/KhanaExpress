@@ -1,6 +1,9 @@
 import React from "react";
 import "./Header.css";
+import useStore from "../../context/useStore";
 function Header() {
+  const { setShowLogin } = useStore();
+
   return (
     <div className="header" id="home">
       <div className="header-contents">
@@ -14,12 +17,11 @@ function Header() {
           Exploring the world of cuisine is like embarking on a flavorful adventure. Testy foods add
           a thrilling twist, turning every bite into a delightful journey for the taste buds.
         </p>
-        <button>Book yummy</button>
+        <button onClick={() => setShowLogin(true)}>Book yummy</button>
       </div>
       <div className="header-image">
         <img src="./header_img.png" alt="Delicious food" />
       </div>
-      
     </div>
   );
 }
