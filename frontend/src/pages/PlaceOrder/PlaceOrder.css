@@ -1,10 +1,11 @@
 .checkout-container {
   display: grid;
-  grid-template-columns: 2fr 1fr ;
+  grid-template-columns: 2fr 1fr;
   gap: 4rem;
   padding: 1rem 8rem;
 }
 
+/* CARD DESIGN */
 .checkout-card,
 .summary-card {
   background: white;
@@ -20,24 +21,35 @@
   margin-top: 1rem;
   border: 1px solid #ddd;
   border-radius: 8px;
+  font-size: 0.95rem;
 }
 
+.checkout-card input:focus {
+  outline: none;
+  border-color: tomato;
+}
+
+/* CITY + PINCODE ROW */
 .row {
   display: flex;
   gap: 1rem;
 }
 
+/* PAYMENT */
 .payment-option {
   display: block;
   margin-top: 1rem;
   cursor: pointer;
+  font-size: 0.95rem;
 }
 
+/* SUMMARY */
 .summary-item,
 .price-row {
   display: flex;
   justify-content: space-between;
   margin-top: 0.8rem;
+  font-size: 0.95rem;
 }
 
 .discount {
@@ -50,19 +62,74 @@
   margin-top: 1rem;
 }
 
+/* BUTTON */
 .place-btn {
   width: 100%;
   margin-top: 1.5rem;
   padding: 1rem;
-  background: tomato;
+  background: var(--primary-color-medium);   /* your primary color */
   border: none;
   color: white;
   font-size: 1rem;
-  border-radius: 8px;
+  font-weight: 600;
+  border-radius: 10px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 .place-btn:hover {
-  background: #e64a19;
+  background: var(--primary-color-dark);   /* your secondary color */
+  transform: translateY(-2px);
+}
+
+
+/* ========================= */
+/* 🔥 RESPONSIVE DESIGN */
+/* ========================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .checkout-container {
+    grid-template-columns: 1.5fr 1fr;
+    padding: 1rem 4rem;
+    gap: 2rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .checkout-container {
+    grid-template-columns: 1fr;   /* 1 column */
+    padding: 1rem 1.5rem;
+  }
+
+  .row {
+    flex-direction: column; /* city + pincode vertical */
+  }
+
+  .checkout-card,
+  .summary-card {
+    padding: 1.5rem;
+  }
+
+  .total {
+    font-size: 1.1rem;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .checkout-container {
+    padding: 1rem;
+  }
+
+  .checkout-card input {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .place-btn {
+    padding: 0.9rem;
+    font-size: 0.95rem;
+  }
 }

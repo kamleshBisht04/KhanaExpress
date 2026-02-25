@@ -13,7 +13,7 @@
 /*  FIXED SCROLL LAYOUT */
 .explore-menu-list {
   display: flex;
-  gap: 1.75rem;
+  gap: 1.70rem;
   text-align: center;
   margin: 1.25rem 0;
   overflow-x: scroll;
