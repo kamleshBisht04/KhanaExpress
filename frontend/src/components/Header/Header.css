@@ -136,7 +136,7 @@
 @media (max-width: 425px) {
 
   .header {
-    margin: 5rem 0;   /* ❌ remove negative margin */
+    margin: 5rem 0.0625rem;   /* ❌ remove negative margin */
     padding: 10% 5%;
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -179,10 +179,10 @@
 }
 
 
-@media (max-width: 320px) {
+@media (max-width: 375px) {
 
   .header {
-    margin: 5.5rem 0;
+    margin: 5.5rem 0.0625rem; ;
     padding: 12% 4%;
     grid-template-columns: 1fr;
     gap: 1.2rem;
